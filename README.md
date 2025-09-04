@@ -11,8 +11,6 @@
 
 ScrollNet is a **gamified video feedback platform** that transforms video evaluation into an engaging, mobile-first experience. Think Tinder meets YouTube with AI-powered insights - users swipe through videos, react with emojis, and provide valuable feedback through an intuitive interface.
 
-### 🚀 **Live Demo**: [http://localhost:3004](http://localhost:3004)
-
 ---
 
 ## ✨ Key Features (MVP - Fully Functional)
