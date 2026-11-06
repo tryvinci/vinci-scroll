@@ -1,321 +1,115 @@
-# ScrollNet - Mobile Video Engagement Platform 📱✨
+# Vinci Scroll
 
-> **Now Live**: Tinder-like video swiping with emoji reactions and AI-powered feedback collection
+Find out which cut people actually watch, before it goes live.
 
-[![Status](https://img.shields.io/badge/Status-MVP%20Complete-brightgreen)](http://localhost:3004)
-[![Frontend](https://img.shields.io/badge/Frontend-Next.js%2014-blue)](http://localhost:3004)
-[![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)](http://localhost:3001)
-[![Database](https://img.shields.io/badge/Database-Supabase-orange)](https://supabase.com)
+Vinci Scroll is a full-screen, swipe-and-react video feed for testing creative with real viewers. People watch the way they already do on their phones: swipe right on what they like, left on what they don't, react with an emoji, and every few videos leave a short written note. You get honest, in-the-moment signal on every version of your work.
 
-## 🎯 What is ScrollNet?
+It is one of Vinci's open-source tools, alongside [Vinci](https://github.com/tryvinci/vinci) and [Vinci Clips](https://github.com/tryvinci/vinci-clips).
 
-ScrollNet is a **gamified video feedback platform** that transforms video evaluation into an engaging, mobile-first experience. Think Tinder meets YouTube with AI-powered insights - users swipe through videos, react with emojis, and provide valuable feedback through an intuitive interface.
+## What it does
 
----
+- **A feed people already know how to use.** Full-screen vertical video with swipe, tap-to-pause and emoji reactions, built mobile-first.
+- **Feedback without a survey.** After every five videos, viewers rate content quality, engagement, relevance and technical finish, and can add a comment.
+- **Every interaction recorded.** Likes, dislikes, reactions, views and written feedback are stored per video, with an analytics endpoint for each one.
+- **Sign in or stay anonymous.** Google sign-in through Supabase, or a guest mode with the full feed.
+- **Your videos, your storage.** Upload to your own Google Cloud Storage bucket; metadata lives in your own Supabase project.
 
-## ✨ Key Features (MVP - Fully Functional)
+## Good for
 
-### 📱 **Mobile-First Swipe Interface**
-- **Tinder-like Gestures**: Swipe right to like, left to dislike, up for next
-- **Full-Screen Experience**: Immersive portrait-optimized video viewing
-- **Touch Controls**: Tap to play/pause, gesture-based navigation
-- **Smooth Animations**: Card-stack transitions with visual feedback
+- Choosing between cuts, hooks or thumbnails before a campaign launches
+- Testing ads and social edits with a target audience
+- Collecting human feedback on generated video
+- Getting a read on product demos and training videos
 
-### 😊 **Rich Emoji Reactions**
-- **8 Emotional Responses**: ❤️ 😂 😍 🤔 🔥 👏 😮 💯
-- **Instant Feedback**: Real-time reaction tracking and storage
-- **Visual Confirmation**: Animated responses with haptic-like feedback
+## Quick start
 
-### 🎯 **Smart Feedback System**
-- **Automated Triggers**: Detailed feedback every 5 videos
-- **Multi-Category Ratings**: Content quality, engagement, relevance, technical
-- **Progress Tracking**: Visual indicators and milestone achievements
+You need Node.js 18 or later, a [Supabase](https://supabase.com) project and a Google Cloud Storage bucket.
 
-### 🔐 **Seamless Authentication**
-- **Google OAuth**: One-click social login
-- **Anonymous Mode**: Full functionality without account creation
-- **User Profiles**: Avatar, stats, reaction counters
-
-### 📊 **Real Video Management**
-- **Database-Driven**: Serving actual uploaded videos (10+ test videos)
-- **Cloud Storage**: Google Cloud Storage integration
-- **Metadata Rich**: Title, description, duration, tags
-
----
-
-## 🎮 How to Use ScrollNet
-
-### **Getting Started** (30 seconds)
-1. **Visit**: [http://localhost:3004](http://localhost:3004)
-2. **Login**: Use Google OAuth or continue as guest
-3. **Start Swiping**: Full-screen video interface loads automatically
-
-### **Gesture Controls**
-```
-👈 Swipe Left   = Dislike video
-👉 Swipe Right  = Like video  
-👆 Swipe Up     = Next video
-👆 Tap Screen   = Play/Pause
-😊 Tap Button   = Open emoji reactions
-```
-
-### **Feedback Flow**
-- **Watch 5 videos** → Automatic feedback prompt appears
-- **Rate categories** → Content quality, engagement, relevance, technical
-- **Add comments** → Text feedback and suggestions
-- **Continue swiping** → Personalized video recommendations
-
----
-
-## 🚀 Quick Start (Developers)
-
-### **Prerequisites**
-- Node.js 18+
-- npm or yarn
-- Git
-
-### **Installation** (2 minutes)
 ```bash
-# 1. Clone the repository
-git clone https://github.com/sdntsng/vinci-scroll.git
+git clone https://github.com/tryvinci/vinci-scroll.git
 cd vinci-scroll
-
-# 2. Install dependencies
 npm install
+cd frontend && npm install && cd ..
 
-# 3. Start development servers
+cp env.example .env
+# fill in your Supabase and Google Cloud values
+
 npm run dev
-
-# 4. Open in browser
-# Frontend: http://localhost:3004 (Mobile-optimized)
-# Backend:  http://localhost:3001 (API endpoints)
 ```
 
-### **Environment Setup**
+The feed opens at `http://localhost:3004` and the API runs at `http://localhost:3001`.
+
+### Set up the database
+
+Run `database/supabase-schema.sql` in your Supabase project's SQL editor, or use the helper:
+
 ```bash
-# Copy environment template
-cp .env.example .env.local
-
-# Add your credentials (optional for local development)
-# NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
-# GOOGLE_CLOUD_PROJECT_ID=your_gcp_project
+node scripts/setup-database.js
 ```
 
----
+### Add videos
 
-## 🛠 Technical Stack
+Upload a folder of `.mp4` files to your bucket and database:
 
-### **Frontend**
-- **Next.js 14**: React framework with App Router
-- **TypeScript**: Full type safety and IntelliSense
-- **Tailwind CSS**: Mobile-first responsive design
-- **Swiper.js**: Touch-based interactions and animations
-
-### **Backend**
-- **Node.js + Express**: RESTful API server
-- **Supabase**: PostgreSQL database with real-time features
-- **Google Cloud Storage**: Scalable video file storage
-- **JWT Authentication**: Secure session management
-
-### **Mobile Optimizations**
-- **Touch-First Design**: All interactions optimized for mobile
-- **60fps Animations**: Smooth gesture feedback
-- **Efficient Loading**: Video metadata preloading
-- **Memory Management**: Optimized for mobile browsers
-
----
-
-## 📊 Current Status & Metrics
-
-### **✅ MVP Achievements**
-- **10+ Videos Uploaded**: Real content serving from database
-- **Full Authentication**: Google OAuth + anonymous users
-- **Mobile Performance**: <2s load time, 60fps animations
-- **Database Integration**: All interactions tracked and stored
-- **Production Ready**: Environment variables, error handling
-
-### **📈 Performance Metrics**
-- **Load Time**: <2 seconds first contentful paint
-- **Touch Response**: <100ms gesture recognition
-- **Video Playback**: <3 seconds average load time
-- **Mobile Compatibility**: iOS Safari 14+, Android Chrome 80+
-
----
-
-## 🎯 Use Cases
-
-### **For Content Creators**
-- **Rapid Feedback**: Get instant reactions to video content
-- **Engagement Analytics**: Understand what resonates with viewers
-- **Quality Assessment**: Multi-dimensional content evaluation
-
-### **For Researchers**
-- **Human-in-the-Loop**: Collect human feedback for AI training
-- **Behavioral Analysis**: Study user engagement patterns
-- **A/B Testing**: Compare different video versions
-
-### **For Businesses**
-- **Market Research**: Test video marketing content
-- **User Experience**: Evaluate product demo videos
-- **Training Content**: Assess educational material effectiveness
-
----
-
-## 🔧 API Endpoints
-
-### **Video Management**
 ```bash
-GET  /api/videos          # Get video feed with pagination
-GET  /api/videos/:id      # Get specific video details
-POST /api/videos/upload   # Upload new video (multipart/form-data)
+node scripts/upload-videos.js /path/to/your/videos
 ```
 
-### **User Interactions**
-```bash
-POST /api/interactions    # Record user interaction (like/dislike/emoji)
-GET  /api/interactions/stats  # Get user interaction statistics
-```
+Sample clips for local testing are in `test/`.
 
-### **Feedback Collection**
-```bash
-POST /api/feedback        # Submit detailed feedback
-GET  /api/feedback/required  # Check if feedback is needed
-```
+## Configuration
 
-### **Authentication**
-```bash
-POST /auth/login          # User login
-POST /auth/register       # User registration
-GET  /auth/me            # Get current user profile
-```
+Copy `env.example` to `.env` and set:
 
----
+| Variable | What it is |
+| --- | --- |
+| `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | Your Supabase project |
+| `GOOGLE_CLOUD_PROJECT_ID`, `GOOGLE_CLOUD_STORAGE_BUCKET` | Where videos are stored |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Path to a service account key with access to that bucket |
+| `PORT`, `FRONTEND_PORT` | API and feed ports (defaults 3001 and 3004) |
+| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_SERVER_URL` | Values the feed reads in the browser |
 
-## 🎨 Design Philosophy
+Keep `.env` and your service account key out of version control.
 
-### **Mobile-First Principles**
-1. **Touch Targets**: Minimum 44px for all interactive elements
-2. **Gesture Priority**: Swipe interactions over tap interactions
-3. **Visual Feedback**: Immediate response to all user actions
-4. **Portrait Optimization**: Designed for vertical phone usage
+## API
 
-### **User Experience**
-- **Zero Learning Curve**: Familiar swipe gestures from social media
-- **Instant Gratification**: Immediate visual feedback for all actions
-- **Progressive Disclosure**: Advanced features revealed gradually
-- **Accessibility**: High contrast, large touch targets, screen reader support
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Health check |
+| `GET` | `/api/videos` | The feed, paginated |
+| `GET` | `/api/videos/:videoId` | One video |
+| `POST` | `/api/videos/:id/view` | Record a view |
+| `POST` | `/api/upload` | Upload a video (multipart) |
+| `POST` | `/api/interactions` | Record a like, dislike or reaction |
+| `GET` | `/api/interactions/:userId/:videoId` | A viewer's interactions with a video |
+| `GET` | `/api/feedback/required` | Whether the viewer is due a feedback prompt |
+| `POST` | `/api/feedback` | Submit written and rated feedback |
+| `GET` | `/api/analytics/video/:videoId` | Reactions and feedback for one video |
+| `POST` | `/api/auth/register`, `/api/auth/login`, `/api/auth/logout` | Accounts |
+| `GET` | `/api/auth/me` | The signed-in viewer |
 
----
+## How it is built
 
-## 🚧 Roadmap
+- **Feed:** Next.js 15, React, TypeScript, Tailwind CSS (`frontend/`)
+- **API:** Node.js and Express (`src/`)
+- **Data and sign-in:** Supabase (PostgreSQL and Auth)
+- **Video storage:** Google Cloud Storage
 
-### **Phase 2: Enhanced UX** (Next 3-4 weeks)
-- [ ] Advanced video player controls (speed, quality)
-- [ ] User analytics dashboard
-- [ ] Gamification elements (points, badges, leaderboards)
-- [ ] Enhanced feedback collection
+## Roadmap
 
-### **Phase 3: AI Integration** (4-5 weeks)
-- [ ] Inworld AI character guidance
-- [ ] Mistral AI content analysis
-- [ ] Personalized recommendations
-- [ ] Conversational feedback collection
+- Viewer and campaign dashboards
+- Side-by-side A/B tests for two or more cuts
+- Audience targeting and invite links
+- Deeper analysis of written feedback
 
-### **Phase 4: Advanced Features** (5-6 weeks)
-- [ ] Reinforcement learning engine
-- [ ] Social features and sharing
-- [ ] Advanced analytics
-- [ ] Competition elements
+Ideas and pull requests are welcome.
 
----
+## Vinci for enterprises
 
-## 🤝 Contributing
+Vinci Scroll is part of Vinci's open-source work. Companies running creative at scale use Vinci Enterprise, which brings the Vinci system into their own cloud with a brand engine, single sign-on, approvals and a team behind it. Our creative studio, Vinci Studios, works on the same system.
 
-We welcome contributions! Here's how to get started:
+[tryvinci.com](https://tryvinci.com) · [Talk to us](https://tryvinci.com/meet)
 
-### **Development Guidelines**
-1. **Fork** the repository
-2. **Create** feature branch (`git checkout -b feature/amazing-feature`)
-3. **Test** on mobile devices (required)
-4. **Commit** changes (`git commit -m 'Add amazing mobile feature'`)
-5. **Push** to branch (`git push origin feature/amazing-feature`)
-6. **Open** Pull Request
+## License
 
-### **Mobile Testing Requirements**
-- Test all features on real mobile devices
-- Verify touch interactions work smoothly at 60fps
-- Ensure accessibility on different screen sizes
-- Check performance on slower devices
-
----
-
-## 📄 Documentation
-
-### **Core Documentation Files**
-- **[PROJECT_PLAN.md](PROJECT_PLAN.md)**: Complete project documentation and roadmap
-- **[README.md](README.md)**: This user-facing guide
-- **[.cursor/rules](.cursor/rules)**: Development rules and guidelines
-- **[.cursor/docs.md](.cursor/docs.md)**: Technical API documentation
-
-### **Documentation Rules**
-- Only these 4 files contain project documentation
-- All other documentation is consolidated here
-- Technical details go in `.cursor/docs.md`
-- User information stays in this README
-
----
-
-## 🎉 Success Stories
-
-### **MVP Validation**
-- **✅ User Engagement**: 90%+ video completion rates
-- **✅ Feedback Quality**: 70%+ users provide detailed feedback
-- **✅ Mobile Performance**: <2s load times on mobile devices
-- **✅ Technical Stability**: 99.9% uptime during testing
-
-### **User Feedback**
-> *"The swipe interface makes video evaluation actually fun!"*  
-> *"Love how smooth the animations are on mobile"*  
-> *"Finally, a video platform that works great on phones"*
-
----
-
-## 📞 Support & Contact
-
-### **Getting Help**
-- **Issues**: [GitHub Issues](https://github.com/sdntsng/vinci-scroll/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/sdntsng/vinci-scroll/discussions)
-- **Documentation**: Check `.cursor/docs.md` for technical details
-
-### **Quick Troubleshooting**
-```bash
-# Port conflicts
-lsof -ti:3001 | xargs kill -9  # Kill backend processes
-lsof -ti:3004 | xargs kill -9  # Kill frontend processes
-
-# Fresh start
-npm run dev  # Restart both servers
-
-# Database issues
-# Check Supabase connection in .env.local
-```
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🌟 Star the Project
-
-If ScrollNet helps you or inspires your work, please ⭐ star the repository!
-
-**Ready to swipe?** → [**Start ScrollNet Now**](http://localhost:3004) 📱✨
-
----
-
-*Built with ❤️ for the future of mobile video engagement*  
-*Last Updated: June 14, 2025* 
+[MIT](LICENSE) © Vinci

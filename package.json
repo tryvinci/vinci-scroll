@@ -1,7 +1,7 @@
 {
   "name": "vinci-scroll",
   "version": "0.1.0",
-  "description": "ScrollNet - Gamified Video Feedback Platform (MVP Phase Development)",
+  "description": "Vinci Scroll: a swipe-and-react video feed for testing creative with real viewers",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -18,11 +18,11 @@
   },
   "keywords": [
     "video",
+    "creative-testing",
     "feedback",
-    "gamification",
-    "ai",
-    "evaluation",
-    "mvp"
+    "swipe",
+    "vinci",
+    "open-source"
   ],
   "author": "Vinci Team",
   "license": "MIT",
@@ -48,10 +48,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdntsng/vinci-scroll.git"
+    "url": "https://github.com/tryvinci/vinci-scroll.git"
   },
   "bugs": {
-    "url": "https://github.com/sdntsng/vinci-scroll/issues"
+    "url": "https://github.com/tryvinci/vinci-scroll/issues"
   },
-  "homepage": "https://github.com/sdntsng/vinci-scroll#readme"
+  "homepage": "https://github.com/tryvinci/vinci-scroll#readme"
 }
